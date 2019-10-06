@@ -1,0 +1,89 @@
+response = Map();
+msg = message.get("text");
+if(msg.equalsIgnoreCase("I'm searching for Laptops"))
+{
+	response.put("action","context");
+	response.put("context_id","browsing");
+	question = {"name":"browsing","replies":{"Awesome. Let’s get you started. "},"suggestions":{"I'll search laptop myself from your site","Let Alice find Laptop for me"}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("I've some Queries and Issues"))
+{
+	response.put("action","context");
+	response.put("context_id","help");
+	question = {"name":"help","replies":{"Glad to assist you😇 What do you need help with?"},"suggestions":{"Questions about the Machine","I wanna upgrade my Machine","Can't find what I'm looking for"}};
+	response.put("questions",{question});
+}
+else if(msg.equalsIgnoreCase("Chat again with Alice"))
+{
+	response = Map();
+	response.put("action","reply");
+	//response.put("context_id","browsing");
+	response.put("replies",{"Looking for anything specific?"});
+	response.put("suggestions",{"I'm new here, just searching for Laptops","I'm an existing laptop user and need help","I want to speak with Customer Executive"});
+	return response;
+}
+else if(msg.equalsIgnoreCase("Need to talk with support Team"))
+{
+	response = Map();
+	response.put("action","forward");
+	response.put("delay","30");
+	response.put("replies",{"Hold on. I'm Connecting you to support team"});
+	return response;
+}
+else if(msg.equalsIgnoreCase("I want to speak with Customer Executive"))
+{
+	response = Map();
+	response.put("action","forward");
+	response.put("delay","30");
+	response.put("replies",{"Hold on. I'm Connecting you to support team"});
+	return response;
+}
+else if(msg.equalsIgnoreCase("Can't find what I'm looking for"))
+{
+	response = Map();
+	response.put("action","forward");
+	response.put("delay","30");
+	response.put("replies",{"Hold on. I'm Connecting you to support team"});
+	return response;
+}
+else if(msg.equalsIgnoreCase("Let Alice find Laptop for me"))
+{
+	response = Map();
+	response.put("action","reply");
+	response.put("replies","Select the specificaltion that you need");
+	return response;
+}
+else if(msg.equalsIgnoreCase("bye"))
+{
+	response = Map();
+	response.put("action","end");
+	response.put("delay","30");
+	response.put("replies",{"Bye %visitor.name%! Nice talking to you 😁. I'll Close the chat shortly","Our Convasation has been sent to your mail %visitor.email%"});
+	return response;
+}
+else if(msg.equalsIgnoreCase("hi"))
+{
+	response = Map();
+	response.put("action","reply");
+	response.put("replies",{"Hello %visitor.name%! 👋 I'm Alice. ","How can I help you today?"});
+	response.put("input",{"type":"select","options":{"I'm searching for Laptops","I've some Queries and Issues","Need to talk with support Team"}});
+	return response;
+}
+else if(msg.equalsIgnoreCase("Regarding Warrenty and Claim"))
+{
+	response = Map();
+	response.put("action","reply");
+	response.put("replies",{"In the laptop warranty, the manufacturer will state how repairs will be completed and whether they will use new, used or refurbished parts. Choosing a new laptop that will be repaired with new parts is always preferable. The warranty will also provide details on where servicing will take place."});
+	return response;
+}
+else
+{
+	response = Map();
+	response.put("action","reply");
+	response.put("replies",{"Sorry. Could you be more specific"});
+	response.put("replies",{"Hello %visitor.name%! 👋 I'm Alice. ","How can I help you today?"});
+	response.put("suggestions",{"I'm searching for Laptops","I've some Queries and Issues","Need to talk with support Team"});
+	return response;
+}
+return response;
