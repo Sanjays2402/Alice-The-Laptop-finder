@@ -1,0 +1,6 @@
+response = Map();
+response.put("action","reply");
+response.put("replies",{"Hello %visitor.name%! 👋 I'm Alice. ","How can I help you today?"});
+//response.put("suggestions",{"I'm new here, Just searching for Laptops","I'm an existing laptop user and need help","I want to speak with Customer Executive"});
+response.put("input",{"type":"select","options":{"I'm searching for Laptops","I've some Queries and Issues","Need to talk with support Team"}});
+return response;
